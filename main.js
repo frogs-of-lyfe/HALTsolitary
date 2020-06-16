@@ -11,7 +11,7 @@ function initNextPrevButtons() {
     let i = 0;
     for (i; i < buttons.length; i++) {
       const button = buttons[i],
-        idx = parseInt(button.dataset.idx);
+        idx = parseInt(button.parentElement.id);
 
       button.addEventListener('click', () => {
         if (isPrev) {
