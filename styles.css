@@ -3,7 +3,10 @@
 html {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 10px;
+  color: #fff;
+  background: #222;
 }
+
 body, h1, h2, h3, h4, p, ul {
   margin: 0;
   padding: 0;
@@ -11,11 +14,10 @@ body, h1, h2, h3, h4, p, ul {
   font-weight: 400;
 }
 
-/* vars */
 :root {
   --space-l: 5rem;
   --space-m: 3rem;
-  --space-s: 1.5rem;
+  --space-s: 1.7rem;
   --bg-red: #ea0202;
 }
 
