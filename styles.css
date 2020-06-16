@@ -43,6 +43,10 @@ section.current {
 
 /* spacing */
 
+/* large */
+.title h4 {
+  margin-bottom: var(--space-l);
+}
 /* medium */
 h3 {
   margin-bottom: var(--space-m);
@@ -91,6 +95,17 @@ a:hover {
   color: yellow;
 }
 
+/* title */
+
+.title {
+  text-align: center;
+}
+.title h2 {
+  font-size: 5rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
 /* buttons */
 
 button {
@@ -101,6 +116,7 @@ button {
   min-width: 75px;
   font-family: 'Source Sans Pro', sans-serif;
   cursor: pointer;
+  background-color: #efefef;
   transition: background-color 0.2s;
 }
 button:hover {
