@@ -2,6 +2,7 @@ function init() {
   initNextPrevButtons();
   initLinkButtons();
   initSectionToggles();
+  initMenuToggle();
 }
 
 let currentIdx = 0,
@@ -63,10 +64,24 @@ function initSectionToggles() {
   }
 }
 
+const menuElm = document.querySelector('menu'),
+  menuToggle = document.querySelector('button.menu-toggle');
+let menuIsActive = false;
+function initMenuToggle() {
+  menuToggle.addEventListener('click', () => {
+    if (!menuIsActive) {
+      menuToggle.innerHTML = 'Close Menu';
+    } else {
+      menuToggle.innerHTML = 'Menu';
+    }
+
+    menuElm.classList.toggle('active');
+    menuIsActive = !menuIsActive;
+  });
+}
+
 const headerElm = document.querySelector('header'),
-  menuElm = document.querySelector('menu'),
-  sections = document.querySelectorAll('section')
-  titleSlides = [0, 1, 7, 12, 17];
+  sections = document.querySelectorAll('section');
 
 // remove current class from current section
 // add to next section
@@ -83,7 +98,7 @@ function displaySection(nextIdx) {
   }
 
   // toggle menu display
-  if (titleSlides.includes(nextIdx)) {
+  if (nextIdx < 1) {
     menuElm.classList.remove('display');
   } else {
     menuElm.classList.add('display');
@@ -96,6 +111,13 @@ function displaySection(nextIdx) {
   // toggle section toggles
   sectionToggles[currentIdx] && sectionToggles[currentIdx].classList.remove('current');
   sectionToggles[nextIdx] && sectionToggles[nextIdx].classList.add('current');
+
+  // toggle menu
+  if (menuIsActive) {
+    menuToggle.innerHTML = 'Menu';
+    menuElm.classList.remove('active');
+    menuIsActive = false;
+  }
 
   // not adding a toggle for the "Take Action" title slide
   // so here is some brute force logic:

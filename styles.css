@@ -85,6 +85,8 @@ h1 a,
 h1 a:hover,
 .section-toggle.current,
 .section-toggle:hover,
+.menu-toggle.current,
+.menu-toggle:hover,
 .red {
   color: red;
 }
@@ -178,7 +180,8 @@ footer {
   padding: 5px 10px;
   text-align: center;
 }
-.section-toggle {
+.section-toggle,
+.menu-toggle {
   border: none;
   border-bottom: 1px solid #222;
   padding: 5px;
@@ -190,7 +193,8 @@ footer {
 .section-toggle.current {
   border-bottom: 1px solid red;
 }
-.section-toggle:hover {
+.section-toggle:hover,
+.menu-toggle:hover {
   background: none;
 }
 
@@ -214,7 +218,7 @@ footer {
   }
 
   menu.display {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     z-index: 10;
@@ -229,13 +233,15 @@ footer {
   menu .section-toggle {
     display: none;
   }
-  menu .section-toggle {
+  menu.active .section-toggle,
+  menu .menu-toggle {
     display: inline-block;
     align-self: flex-end;
     margin: 0;
     border-bottom: none;
   }
-  menu .section-toggle.current {
+  menu .section-toggle.current,
+  menu .menu-toggle.current {
     border-bottom: none;
   }
 
