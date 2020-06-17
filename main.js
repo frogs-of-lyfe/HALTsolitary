@@ -88,6 +88,7 @@ function displaySection(nextIdx) {
   // toggle section toggles
   sectionToggles[currentIdx] && sectionToggles[currentIdx].classList.remove('current');
   sectionToggles[nextIdx] && sectionToggles[nextIdx].classList.add('current');
+  
   // not adding a toggle for the "Take Action" title slide
   // so here is some brute force logic:
   if (currentIdx === 17 && nextIdx !== 18) sectionToggles[18].classList.remove('current');

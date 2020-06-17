@@ -188,9 +188,6 @@ footer {
 .section-toggle.current {
   border-bottom: 1px solid red;
 }
-.section-toggle:not(:last-child) {
-  margin-right: 5px;
-}
 .section-toggle:hover {
   background: none;
 }
