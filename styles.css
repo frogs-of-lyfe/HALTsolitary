@@ -78,6 +78,8 @@ h1 {
   font-size: 4rem;
 }
 h1,
+h1 a,
+h1 a:hover,
 .red {
   color: red;
 }
@@ -108,6 +110,9 @@ a {
 }
 a:hover {
   color: yellow;
+}
+h1 a {
+  text-decoration: none;
 }
 
 /* title */
@@ -140,12 +145,14 @@ button:hover {
 button + button {
   margin-left: 10px;
 }
-.next {
+.next,
+.bg-red {
   font-weight: 600;
   color: #fff;
   background-color: var(--bg-red);
 }
-.next:hover {
+.next:hover,
+.bg-red:hover {
   background-color: #b10000;
 }
 .primary {

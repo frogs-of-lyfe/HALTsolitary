@@ -1,5 +1,6 @@
 function init() {
   initNextPrevButtons();
+  initLinkButtons();
 }
 
 let currentIdx = 0,
@@ -28,6 +29,25 @@ function initNextPrevButtons() {
 
   attachHandlers(nextButtons);
   attachHandlers(prevButtons, true);
+}
+
+// attach displaySection call to link buttons
+function initLinkButtons() {
+  const linkButtons = document.querySelectorAll('button.link');
+
+  function attachHandlers(buttons) {
+    let i = 0;
+    for (i; i < buttons.length; i++) {
+      const button = buttons[i],
+        { href } = button.dataset;
+
+      button.addEventListener('click', () => {
+        window.open(href, '_self');
+      });
+    }
+  }
+
+  attachHandlers(linkButtons);
 }
 
 const headerElm = document.querySelector('header'),
