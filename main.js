@@ -68,6 +68,8 @@ const headerElm = document.querySelector('header'),
 // remove current class from current section
 // add to next section
 function displaySection(nextIdx) {
+  window.scroll(0, 0);
+  
   // toggle header/footer opacity
   if (nextIdx < 1) {
     headerElm.classList.remove('fade');
