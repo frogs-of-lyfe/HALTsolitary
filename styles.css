@@ -191,6 +191,7 @@ footer {
 }
 
 /* mobile */
+
 @media (max-width: 845px) {
   body {
     display: block;
@@ -209,14 +210,20 @@ footer {
   }
 
   section {
-    padding: var(--space-m) 10px;
+    padding: var(--space-l) 10px;
   }
 
   .title.current {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     min-height: 100%;
+  }
+
+  button {
+    padding: 15px;
+    min-width: 100px;
   }
 }
 
