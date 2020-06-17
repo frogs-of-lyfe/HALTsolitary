@@ -190,6 +190,24 @@ footer {
   background: none;
 }
 
+/* mobile */
+@media (max-width: 900px) {
+  body {
+    display: block;
+  }
+  header {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: var(--space-l);
+    padding: 10px;
+  }
+  header.fade,
+  footer {
+    display: none;
+  }
+}
+
 /* latin-ext */
 @font-face {
   font-family: 'Source Sans Pro';
