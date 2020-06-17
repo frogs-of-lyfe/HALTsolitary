@@ -155,8 +155,8 @@ button {
 button:hover {
   background-color: rgb(190,190,190);
 }
-button + button {
-  margin-left: 10px;
+button:not(:last-of-type) {
+  margin-right: 10px;
 }
 .next,
 .bg-red {
@@ -239,6 +239,7 @@ footer {
     align-self: flex-end;
     margin: 0;
     border-bottom: none;
+    padding: 10px 15px;
   }
   menu .section-toggle.current,
   menu .menu-toggle.current {
@@ -260,9 +261,6 @@ footer {
   button {
     padding: 15px;
     min-width: 100px;
-  }
-  .primary {
-    min-width: 175px;
   }
 }
 
