@@ -89,7 +89,7 @@ function displaySection(nextIdx) {
   window.scroll(0, 0);
 
   // toggle header opacity
-  if (nextIdx < 1) {
+  if ((nextIdx < 1) || (nextIdx > 18)) {
     headerElm.classList.remove('fade');
     isActive = false;
   } else if (nextIdx > 0 && !isActive) {
