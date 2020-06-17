@@ -97,13 +97,6 @@ function displaySection(nextIdx) {
     isActive = true;
   }
 
-  // toggle menu display
-  if (nextIdx < 1) {
-    menuElm.classList.remove('display');
-  } else {
-    menuElm.classList.add('display');
-  }
-
   // toggle section display
   sections[currentIdx].classList.remove('current');
   sections[nextIdx].classList.add('current');

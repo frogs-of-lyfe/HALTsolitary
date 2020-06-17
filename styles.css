@@ -117,6 +117,10 @@ p, li {
   font-size: 2rem;
   line-height: 2.7rem;
 }
+li {
+  margin-left: 30px;
+  width: calc(100% - 30px);
+}
 a {
   color: #fff;
   transition: color 0.2s;
@@ -126,6 +130,10 @@ a:hover {
 }
 h1 a {
   text-decoration: none;
+}
+
+.number {
+  display: none;
 }
 
 /* title */
@@ -214,10 +222,36 @@ footer {
     position: relative;
     top: 0;
     left: 0;
-    padding: 10px;
+    padding: var(--space-l) 10px 10px;
   }
 
-  menu.display {
+  section {
+    padding: var(--space-l) 10px;
+  }
+
+  .title.current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  .number {
+    display: inline-block;
+    margin-left: 5px;
+    font-style: normal;
+  }
+  .number::first-letter {
+    color: red;
+  }
+
+  button {
+    padding: 15px;
+    min-width: 100px;
+  }
+
+  menu {
     position: fixed;
     top: 0;
     right: 0;
@@ -239,28 +273,11 @@ footer {
     align-self: flex-end;
     margin: 0;
     border-bottom: none;
-    padding: 10px 15px;
+    padding: 6px 15px;
   }
   menu .section-toggle.current,
   menu .menu-toggle.current {
     border-bottom: none;
-  }
-
-  section {
-    padding: var(--space-l) 10px;
-  }
-
-  .title.current {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height: 100%;
-  }
-
-  button {
-    padding: 15px;
-    min-width: 100px;
   }
 }
 
