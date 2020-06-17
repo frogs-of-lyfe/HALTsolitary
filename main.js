@@ -2,6 +2,9 @@ function init() {
   initNextPrevButtons();
 }
 
+let currentIdx = 0,
+  isActive = false;
+
 // attach displaySection call to next/prev buttons
 function initNextPrevButtons() {
   const nextButtons = document.querySelectorAll('button.next'),
@@ -27,12 +30,21 @@ function initNextPrevButtons() {
   attachHandlers(prevButtons, true);
 }
 
-const sections = document.querySelectorAll('section');
-let currentIdx = 0;
+const headerElm = document.querySelector('header'),
+  sections = document.querySelectorAll('section');
 
 // remove current class from current section
 // add to next section
 function displaySection(nextIdx) {
+  // toggle header opacity
+  if (nextIdx < 1) {
+    headerElm.classList.remove('fade');
+    isActive = false;
+  } else if (nextIdx > 0 && !isActive) {
+    headerElm.classList.add('fade');
+    isActive = true;
+  }
+
   sections[currentIdx].classList.remove('current');
   sections[nextIdx].classList.add('current');
   currentIdx = nextIdx;
