@@ -89,7 +89,7 @@ function displaySection(nextIdx) {
   window.scroll(0, 0);
 
   // toggle header opacity
-  if ((nextIdx < 1) || (nextIdx > 18)) {
+  if ((nextIdx < 1) || (nextIdx > 17)) {
     headerElm.classList.remove('fade');
     isActive = false;
   } else if (nextIdx > 0 && !isActive) {
@@ -111,11 +111,6 @@ function displaySection(nextIdx) {
     menuElm.classList.remove('active');
     menuIsActive = false;
   }
-
-  // not adding a toggle for the "Take Action" title slide
-  // so here is some brute force logic:
-  if (currentIdx === 17 && nextIdx !== 18) sectionToggles[18].classList.remove('current');
-  if (nextIdx === 17) sectionToggles[18].classList.add('current');
 
   currentIdx = nextIdx;
 }
