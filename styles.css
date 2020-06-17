@@ -36,12 +36,20 @@ header {
   transition: opacity 0.5s;
 }
 header.fade {
-  opacity: 0.5;
+  opacity: 0.4;
+}
+header:hover {
+  opacity: 1;
 }
 
 section {
   display: none;
-  max-width: 825px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 10px;
+  max-width: 845px;
+  background-color: rgba(34, 34, 34, 0.7);
 }
 section.current {
   display: block;
@@ -59,7 +67,8 @@ h3 {
 }
 /* small */
 h4,
-p:not(:last-of-type) {
+p:not(:last-of-type),
+li:not(:last-of-type) {
   margin-bottom: var(--space-s);
 }
 
@@ -89,7 +98,7 @@ h4 {
   font-size: 1.5rem;
   font-style: italic;
 }
-p {
+p, li {
   font-size: 2rem;
   line-height: 2.7rem;
 }
