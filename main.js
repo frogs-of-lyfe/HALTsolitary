@@ -16,7 +16,8 @@ function initNextPrevButtons() {
     let i = 0;
     for (i; i < buttons.length; i++) {
       const button = buttons[i],
-        idx = parseInt(button.parentElement.id);
+        parentElm = button.parentElement,
+        idx = parseInt(parentElm.id || parentElm.dataset.idx);
 
       button.addEventListener('click', () => {
         if (isPrev) {
@@ -69,7 +70,9 @@ const headerElm = document.querySelector('header'),
 // add to next section
 function displaySection(nextIdx) {
   window.scroll(0, 0);
-  
+
+  console.log(nextIdx)
+
   // toggle header/footer opacity
   if (nextIdx < 1) {
     headerElm.classList.remove('fade');

@@ -88,7 +88,7 @@ h1 a:hover,
 /* type */
 
 h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 h2 {
   font-size: 1.5rem;
@@ -191,7 +191,7 @@ footer {
 }
 
 /* mobile */
-@media (max-width: 900px) {
+@media (max-width: 845px) {
   body {
     display: block;
   }
@@ -208,12 +208,15 @@ footer {
     padding: 10px;
   }
 
-  h1 {
-    font-size: 3rem;
-  }
-
   section {
     padding: var(--space-m) 10px;
+  }
+
+  .title.current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
   }
 }
 
