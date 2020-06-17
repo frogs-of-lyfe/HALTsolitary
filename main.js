@@ -64,22 +64,29 @@ function initSectionToggles() {
 }
 
 const headerElm = document.querySelector('header'),
-  sections = document.querySelectorAll('section');
+  menuElm = document.querySelector('menu'),
+  sections = document.querySelectorAll('section')
+  titleSlides = [0, 1, 7, 12, 17];
 
 // remove current class from current section
 // add to next section
 function displaySection(nextIdx) {
   window.scroll(0, 0);
 
-  console.log(nextIdx)
-
-  // toggle header/footer opacity
+  // toggle header opacity
   if (nextIdx < 1) {
     headerElm.classList.remove('fade');
     isActive = false;
   } else if (nextIdx > 0 && !isActive) {
     headerElm.classList.add('fade');
     isActive = true;
+  }
+
+  // toggle menu display
+  if (titleSlides.includes(nextIdx)) {
+    menuElm.classList.remove('display');
+  } else {
+    menuElm.classList.add('display');
   }
 
   // toggle section display
