@@ -163,8 +163,8 @@ button {
 button:hover {
   background-color: rgb(190,190,190);
 }
-button:not(:last-of-type) {
-  margin-right: 10px;
+button + button {
+  margin-left: 10px;
 }
 .next,
 .bg-red {
@@ -189,7 +189,8 @@ footer {
   text-align: center;
 }
 .section-toggle,
-.menu-toggle {
+.menu-toggle,
+.menu-link {
   border: none;
   border-bottom: 1px solid #222;
   padding: 5px;
@@ -242,9 +243,6 @@ footer {
     margin-left: 5px;
     font-style: normal;
   }
-  .number::first-letter {
-    color: red;
-  }
 
   button {
     padding: 15px;
@@ -264,11 +262,13 @@ footer {
     background: #222;
     box-shadow: -10px 10px 10px #222;
   }
-  menu .section-toggle {
+  menu .section-toggle,
+  .menu-link {
     display: none;
   }
-  menu.active .section-toggle,
-  menu .menu-toggle {
+  .active .section-toggle,
+  .active .menu-link,
+  .menu-toggle {
     display: inline-block;
     align-self: flex-end;
     margin: 0;
@@ -276,7 +276,8 @@ footer {
     padding: 6px 15px;
   }
   menu .section-toggle.current,
-  menu .menu-toggle.current {
+  .menu-link,
+  .menu-toggle.current {
     border-bottom: none;
   }
 }
