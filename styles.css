@@ -37,7 +37,6 @@ header {
   left: 20px;
   transition: opacity 0.5s;
 }
-
 .fade {
   opacity: 0.4;
 }
@@ -174,7 +173,6 @@ footer {
   bottom: 20px;
   padding: 5px 10px;
   text-align: center;
-  transition: opacity 0.5s;
 }
 .section-toggle {
   border: none;

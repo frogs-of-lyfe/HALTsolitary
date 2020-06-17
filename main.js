@@ -47,7 +47,6 @@ function initLinkButtons() {
 }
 
 const sectionToggles = {};
-
 function initSectionToggles() {
   const toggles = document.querySelectorAll('button.section-toggle');
   let i = 0;
@@ -64,7 +63,6 @@ function initSectionToggles() {
 }
 
 const headerElm = document.querySelector('header'),
-  footerElm = document.querySelector('footer'),
   sections = document.querySelectorAll('section');
 
 // remove current class from current section
@@ -73,11 +71,9 @@ function displaySection(nextIdx) {
   // toggle header/footer opacity
   if (nextIdx < 1) {
     headerElm.classList.remove('fade');
-    footerElm.classList.add('fade');
     isActive = false;
   } else if (nextIdx > 0 && !isActive) {
     headerElm.classList.add('fade');
-    footerElm.classList.remove('fade');
     isActive = true;
   }
 
@@ -88,7 +84,7 @@ function displaySection(nextIdx) {
   // toggle section toggles
   sectionToggles[currentIdx] && sectionToggles[currentIdx].classList.remove('current');
   sectionToggles[nextIdx] && sectionToggles[nextIdx].classList.add('current');
-  
+
   // not adding a toggle for the "Take Action" title slide
   // so here is some brute force logic:
   if (currentIdx === 17 && nextIdx !== 18) sectionToggles[18].classList.remove('current');
