@@ -5,6 +5,7 @@ html {
   font-size: 10px;
   color: #fff;
   background: #222;
+  height: 100vh;
 }
 
 body, h1, h2, h3, h4, p, ul {
@@ -27,6 +28,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100%;
 }
 
 header {
@@ -35,10 +37,11 @@ header {
   left: 20px;
   transition: opacity 0.5s;
 }
-header.fade {
+
+.fade {
   opacity: 0.4;
 }
-header:hover {
+.fade:hover {
   opacity: 1;
 }
 
@@ -72,16 +75,21 @@ li:not(:last-of-type) {
   margin-bottom: var(--space-s);
 }
 
+/* red */
+
+h1,
+h1 a,
+h1 a:hover,
+.section-toggle.current,
+.section-toggle:hover,
+.red {
+  color: red;
+}
+
 /* type */
 
 h1 {
   font-size: 4rem;
-}
-h1,
-h1 a,
-h1 a:hover,
-.red {
-  color: red;
 }
 h2 {
   font-size: 1.5rem;
@@ -157,6 +165,34 @@ button + button {
 }
 .primary {
   min-width: 150px;
+}
+
+/* counter */
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  padding: 5px 10px;
+  text-align: center;
+  transition: opacity 0.5s;
+}
+.section-toggle {
+  border: none;
+  border-bottom: 1px solid #222;
+  padding: 5px;
+  font-size: 1.5rem;
+  color: #fff;
+  background: none;
+  min-width: 0;
+}
+.section-toggle.current {
+  border-bottom: 1px solid red;
+}
+.section-toggle:not(:last-child) {
+  margin-right: 5px;
+}
+.section-toggle:hover {
+  background: none;
 }
 
 /* latin-ext */

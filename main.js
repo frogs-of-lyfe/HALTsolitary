@@ -1,6 +1,7 @@
 function init() {
   initNextPrevButtons();
   initLinkButtons();
+  initSectionToggles();
 }
 
 let currentIdx = 0,
@@ -33,39 +34,64 @@ function initNextPrevButtons() {
 
 // attach displaySection call to link buttons
 function initLinkButtons() {
-  const linkButtons = document.querySelectorAll('button.link');
+  const buttons = document.querySelectorAll('button.link');
+  let i = 0;
+  for (i; i < buttons.length; i++) {
+    const button = buttons[i],
+      { href } = button.dataset;
 
-  function attachHandlers(buttons) {
-    let i = 0;
-    for (i; i < buttons.length; i++) {
-      const button = buttons[i],
-        { href } = button.dataset;
-
-      button.addEventListener('click', () => {
-        window.open(href, '_self');
-      });
-    }
+    button.addEventListener('click', () => {
+      window.open(href, '_self');
+    });
   }
+}
 
-  attachHandlers(linkButtons);
+const sectionToggles = {};
+
+function initSectionToggles() {
+  const toggles = document.querySelectorAll('button.section-toggle');
+  let i = 0;
+  for (i; i < toggles.length; i++) {
+    const toggle = toggles[i],
+      { idx } = toggle.dataset;
+
+    sectionToggles[idx] = toggle;
+
+    toggle.addEventListener('click', () => {
+      displaySection(idx);
+    });
+  }
 }
 
 const headerElm = document.querySelector('header'),
+  footerElm = document.querySelector('footer'),
   sections = document.querySelectorAll('section');
 
 // remove current class from current section
 // add to next section
 function displaySection(nextIdx) {
-  // toggle header opacity
+  // toggle header/footer opacity
   if (nextIdx < 1) {
     headerElm.classList.remove('fade');
+    footerElm.classList.add('fade');
     isActive = false;
   } else if (nextIdx > 0 && !isActive) {
     headerElm.classList.add('fade');
+    footerElm.classList.remove('fade');
     isActive = true;
   }
 
+  // toggle section display
   sections[currentIdx].classList.remove('current');
   sections[nextIdx].classList.add('current');
+
+  // toggle section toggles
+  sectionToggles[currentIdx] && sectionToggles[currentIdx].classList.remove('current');
+  sectionToggles[nextIdx] && sectionToggles[nextIdx].classList.add('current');
+  // not adding a toggle for the "Take Action" title slide
+  // so here is some brute force logic:
+  if (currentIdx === 17 && nextIdx !== 18) sectionToggles[18].classList.remove('current');
+  if (nextIdx === 17) sectionToggles[18].classList.add('current');
+
   currentIdx = nextIdx;
 }
