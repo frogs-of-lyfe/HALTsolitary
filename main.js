@@ -1,3 +1,4 @@
+// init
 function init() {
   initNextPrevButtons();
   initLinkButtons();
@@ -5,14 +6,25 @@ function init() {
   initMenuToggle();
 }
 
+// collect elements
+const header = document.querySelector('header'),
+  linkButtons = document.querySelectorAll('button.link'),
+  menu = document.querySelector('menu'),
+  menuToggle = document.querySelector('button.menu-toggle'),
+  nextButtons = document.querySelectorAll('button.next'),
+  prevButtons = document.querySelectorAll('button.prev')
+  sections = document.querySelectorAll('section'),
+  sectionToggles = document.querySelectorAll('button.section-toggle'),
+  // to store section toggle elements
+  sectionToggleElms = {};
+
+// init flags
 let currentIdx = 0,
-  isActive = false;
+  menuIsActive = false,
+  primerIsActive = false;
 
-// attach displaySection call to next/prev buttons
+// attach calls to displaySection
 function initNextPrevButtons() {
-  const nextButtons = document.querySelectorAll('button.next'),
-    prevButtons = document.querySelectorAll('button.prev');
-
   function attachHandlers(buttons, isPrev) {
     let i = 0;
     for (i; i < buttons.length; i++) {
@@ -34,12 +46,11 @@ function initNextPrevButtons() {
   attachHandlers(prevButtons, true);
 }
 
-// attach displaySection call to link buttons
+// attach calls to open hrefs
 function initLinkButtons() {
-  const buttons = document.querySelectorAll('button.link');
   let i = 0;
-  for (i; i < buttons.length; i++) {
-    const button = buttons[i],
+  for (i; i < linkButtons.length; i++) {
+    const button = linkButtons[i],
       { href } = button.dataset;
 
     button.addEventListener('click', () => {
@@ -48,15 +59,14 @@ function initLinkButtons() {
   }
 }
 
-const sectionToggles = {};
+// attach calls to displaySection
 function initSectionToggles() {
-  const toggles = document.querySelectorAll('button.section-toggle');
   let i = 0;
-  for (i; i < toggles.length; i++) {
-    const toggle = toggles[i],
+  for (i; i < sectionToggles.length; i++) {
+    const toggle = sectionToggles[i],
       { idx } = toggle.dataset;
 
-    sectionToggles[idx] = toggle;
+    sectionToggleElms[idx] = toggle;
 
     toggle.addEventListener('click', () => {
       displaySection(idx);
@@ -64,9 +74,7 @@ function initSectionToggles() {
   }
 }
 
-const menuElm = document.querySelector('menu'),
-  menuToggle = document.querySelector('button.menu-toggle');
-let menuIsActive = false;
+// attach calls to open/close mobile menu
 function initMenuToggle() {
   menuToggle.addEventListener('click', () => {
     if (!menuIsActive) {
@@ -75,42 +83,42 @@ function initMenuToggle() {
       menuToggle.innerHTML = 'Menu';
     }
 
-    menuElm.classList.toggle('active');
+    menu.classList.toggle('active');
     menuIsActive = !menuIsActive;
   });
 }
 
-const headerElm = document.querySelector('header'),
-  sections = document.querySelectorAll('section');
-
 // remove current class from current section
-// add to next section
+// add current class to next section
+// handle toggle states
 function displaySection(nextIdx) {
+  // reset scroll depth (for mobile experience)
   window.scroll(0, 0);
 
   // toggle header opacity
   if ((nextIdx < 1) || (nextIdx > 17)) {
-    headerElm.classList.remove('fade');
-    isActive = false;
-  } else if (nextIdx > 0 && !isActive) {
-    headerElm.classList.add('fade');
-    isActive = true;
+    header.classList.remove('fade');
+    primerIsActive = false;
+  } else if (nextIdx > 0 && !primerIsActive) {
+    header.classList.add('fade');
+    primerIsActive = true;
   }
 
   // toggle section display
   sections[currentIdx].classList.remove('current');
   sections[nextIdx].classList.add('current');
 
-  // toggle section toggles
-  sectionToggles[currentIdx] && sectionToggles[currentIdx].classList.remove('current');
-  sectionToggles[nextIdx] && sectionToggles[nextIdx].classList.add('current');
+  // toggle section toggle states
+  sectionToggleElms[currentIdx] && sectionToggleElms[currentIdx].classList.remove('current');
+  sectionToggleElms[nextIdx] && sectionToggleElms[nextIdx].classList.add('current');
 
-  // toggle menu
+  // close mobile menu, if open
   if (menuIsActive) {
+    menu.classList.remove('active');
     menuToggle.innerHTML = 'Menu';
-    menuElm.classList.remove('active');
     menuIsActive = false;
   }
 
+  // update current index
   currentIdx = nextIdx;
 }
