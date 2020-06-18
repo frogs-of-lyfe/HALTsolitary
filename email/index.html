@@ -19,7 +19,7 @@
   <ul class="no-space">
     <li>NY State Senate Majority Leader Andrea Stewart-Cousins: scousins@nysenate.gov</li>
     <li>NY State Assembly Speaker Carl E. Heastie: Speaker@nyassembly.gov</li>
-    <li><a href="javascript:copy('scousins@nysenate.gov,Speaker@nyassembly.gov')">Copy their emails to clipboard.</a></li>
+    <li class="hide-on-mobile"><a href="javascript:copy('scousins@nysenate.gov,Speaker@nyassembly.gov')">Copy their emails to clipboard.</a></li>
   </ul>
 
   <!-- <p>This email should be CC&rsquo;d to the rest of the NY State Senators and Assembly Members:</p>
@@ -30,7 +30,7 @@
   <p>This email should also be sent to NY Governor Andrew Cuomo. Copy the text below, then use the <a href="https://www.governor.ny.gov/content/governor-contact-form" target="_blank">Governor Contact Form</a> to send the email to the Governor's office.</p>
 
   <div class="email-body margin-bottom-l">
-    <p>(<a href="javascript:copy('My name is [your name], and I am a resident of [your location]. I am writing today to urge you to support the Humane Alternatives to Long-term (HALT) Solitary Confinement Act (A.2500 / S.1623).\n\nIn 2015, the US government voted for, and the entire United Nations adopted, the Mandela Rules, which prohibit any person from being held in solitary beyond 15 days. It is with great shame that I reflect on the fact that New York fails to impose any limits on the total time a person must spend in solitary confinement, with some individuals currently spending months, years and even decades in isolation. Long-term solitary confinement can lead to severe psychological damage, and drastically increases the risk of suicide in prisons. At the same time, solitary confinement often fails to address the underlying causes of problematic behavior, and exacerbates that behavior as people deteriorate psychologically, physically, and socially.\n\nI urge you to vote YES for the HALT Solitary Confinement Act (A.2500 / S.1623), which would impose strict limits on the use of solitary confinement, provide meaningful alternatives to effectively and humanely address behavioral issues, and require greater transparency around the use of solitary confinement. Long-term solitary confinement is torture, and we must end its use in New York prisons and jails now.\n\nThank you,\n[your name]')">Copy email text</a>)</p>
+    <p class="hide-on-mobile">(<a href="javascript:copy('My name is [your name], and I am a resident of [your location]. I am writing today to urge you to support the Humane Alternatives to Long-term (HALT) Solitary Confinement Act (A.2500 / S.1623).\n\nIn 2015, the US government voted for, and the entire United Nations adopted, the Mandela Rules, which prohibit any person from being held in solitary beyond 15 days. It is with great shame that I reflect on the fact that New York fails to impose any limits on the total time a person must spend in solitary confinement, with some individuals currently spending months, years and even decades in isolation. Long-term solitary confinement can lead to severe psychological damage, and drastically increases the risk of suicide in prisons. At the same time, solitary confinement often fails to address the underlying causes of problematic behavior, and exacerbates that behavior as people deteriorate psychologically, physically, and socially.\n\nI urge you to vote YES for the HALT Solitary Confinement Act (A.2500 / S.1623), which would impose strict limits on the use of solitary confinement, provide meaningful alternatives to effectively and humanely address behavioral issues, and require greater transparency around the use of solitary confinement. Long-term solitary confinement is torture, and we must end its use in New York prisons and jails now.\n\nThank you,\n[your name]')">Copy email text</a>)</p>
     <p>My name is [your name], and I am a resident of [your location]. I am writing today to urge you to support the Humane Alternatives to Long-term (HALT) Solitary Confinement Act (A.2500 / S.1623).</p>
     <p>In 2015, the US government voted for, and the entire United Nations adopted, the Mandela Rules, which prohibit any person from being held in solitary beyond 15 days. It is with great shame that I reflect on the fact that New York fails to impose any limits on the total time a person must spend in solitary confinement, with some individuals currently spending months, years and even decades in isolation. Long-term solitary confinement can lead to severe psychological damage, and drastically increases the risk of suicide in prisons. At the same time, solitary confinement often fails to address the underlying causes of problematic behavior, and exacerbates that behavior as people deteriorate psychologically, physically, and socially.</p>
     <p>I urge you to vote YES for the HALT Solitary Confinement Act (A.2500 / S.1623), which would impose strict limits on the use of solitary confinement, provide meaningful alternatives to effectively and humanely address behavioral issues, and require greater transparency around the use of solitary confinement. Long-term solitary confinement is torture, and we must end its use in New York prisons and jails now.</p>
@@ -40,10 +40,16 @@
 
   <script type="text/javascript">
     function copy(text) {
-      navigator.clipboard.writeText(text).then(function() {
-        alert('Text copied to clipboard.');
-      }, function() {
-        alert('Text failed to copy to clipboard.');
+      navigator.permissions.query({name: "clipboard-write"}).then(result => {
+        if (result.state == "granted" || result.state == "prompt") {
+          navigator.clipboard.writeText(text).then(function() {
+            alert('Text copied to clipboard.');
+          }, function() {
+            alert('Text failed to copy to clipboard.');
+          });
+        } else {
+          alert('Text failed to copy to clipboard because permissions were not granted.');
+        }
       });
     }
   </script>

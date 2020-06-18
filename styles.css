@@ -267,7 +267,8 @@ footer {
   /* * * * * * * * */
   
   .fade,
-  footer {
+  footer,
+  .hide-on-mobile {
     display: none;
   }
 
