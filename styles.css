@@ -35,7 +35,7 @@ body {
   align-items: center;
   min-height: 100%;
 }
-/* for email/index */
+/* for email page */
 .unflexed {
   display: block;
   padding: 20px;
@@ -98,6 +98,21 @@ h4,
 p:not(:last-child),
 li:not(:last-child) {
   margin-bottom: var(--space-s);
+}
+
+/* for unordered lists with no space between items */
+.no-space li {
+  margin-bottom: 0;
+}
+.no-space + p {
+  margin-top: var(--space-s);
+}
+
+.email-body {
+  display: inline-block;
+  margin-top: var(--space-l);
+  border-top: 1px dotted var(--text-color);
+  padding-top: var(--space-m);
 }
 
 /* * * */
@@ -290,7 +305,7 @@ footer {
   .title h4 {
     margin-bottom: var(--space-m);
   }
-  
+
   .number {
     display: inline-block;
     margin-left: 5px;
