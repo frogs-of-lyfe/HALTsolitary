@@ -67,7 +67,8 @@ img {
 }
 
 /* show on mobile only */
-menu {
+menu,
+.progress-container {
   display: none;
 }
 
@@ -269,9 +270,9 @@ footer {
 
 @media (max-width: 845px) {
   
-  /* * * * * * * * */
-  /* hide/show elements */
-  /* * * * * * * * */
+  /* * * * * * * * * * * */
+  /* hide/show elements  */
+  /* * * * * * * * * * * */
   
   .fade,
   footer,
@@ -355,6 +356,28 @@ footer {
     margin: 0;
     border-bottom: none;
     padding: 6px 15px;
+  }
+
+  /* * * * * * * * */
+  /* progress bar  */
+  /* * * * * * * * */
+
+  .progress-container.active {
+    display: block;
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    z-index: 5;
+    width: 50%;
+    height: 2px;
+    background-color: var(--text-color);
+  }
+
+  .progress-bar {
+    position: absolute;
+    height: 2px;
+    background-color: red;
+    transition: width 0.2s;
   }
 }
 

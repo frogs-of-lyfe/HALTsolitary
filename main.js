@@ -18,6 +18,8 @@ const header = document.querySelector('header'),
   menuSectionToggleElms = {},
   nextButtons = document.querySelectorAll('button.next'),
   prevButtons = document.querySelectorAll('button.prev'),
+  progressBar = document.querySelector('.progress-bar'),
+  progressContainer = document.querySelector('.progress-container'),
   resetButton = document.querySelector('button.reset'),
   sections = document.querySelectorAll('section'),
   sectionToggles = document.querySelectorAll('button.section-toggle'),
@@ -126,11 +128,21 @@ function displaySection(nextIdx) {
   // toggle header opacity
   if ((nextIdx < 1) || (nextIdx > 17)) {
     header.classList.remove('fade');
+    progressContainer.classList.remove('active');
     primerIsActive = false;
   } 
   else if (nextIdx > 0 && !primerIsActive) {
     header.classList.add('fade');
+    progressContainer.classList.add('active');
     primerIsActive = true;
+  }
+
+  // mark progress
+  if (nextIdx > 0) {
+    progressBar.style = `width: ${100 * (nextIdx / 18)}%`
+  }
+  else if (nextIdx < 1) {
+    progressBar.style = '';
   }
 
   // toggle section display
