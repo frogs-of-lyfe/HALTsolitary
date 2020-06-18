@@ -287,6 +287,10 @@ footer {
   /* mobile type */
   /* * * * * * * */
 
+  .title h4 {
+    margin-bottom: var(--space-m);
+  }
+  
   .number {
     display: inline-block;
     margin-left: 5px;
@@ -296,6 +300,7 @@ footer {
   button {
     padding: 15px;
     min-width: 100px;
+    margin-top: var(--space-m);
   }
 
   /* * * * * * * */
