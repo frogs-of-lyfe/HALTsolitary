@@ -1,9 +1,10 @@
 // init
 function init() {
-  initNextPrevButtons();
   initLinkButtons();
-  initSectionToggles();
+  initNextPrevButtons();
   initMenuToggle();
+  initResetButton();
+  initSectionToggles();
 }
 
 // collect elements
@@ -12,7 +13,8 @@ const header = document.querySelector('header'),
   menu = document.querySelector('menu'),
   menuToggle = document.querySelector('button.menu-toggle'),
   nextButtons = document.querySelectorAll('button.next'),
-  prevButtons = document.querySelectorAll('button.prev')
+  prevButtons = document.querySelectorAll('button.prev'),
+  resetButton = document.querySelector('button.reset'),
   sections = document.querySelectorAll('section'),
   sectionToggles = document.querySelectorAll('button.section-toggle'),
   // to store section toggle elements
@@ -22,6 +24,19 @@ const header = document.querySelector('header'),
 let currentIdx = 0,
   menuIsActive = false,
   primerIsActive = false;
+
+// attach calls to open hrefs
+function initLinkButtons() {
+  let i = 0;
+  for (i; i < linkButtons.length; i++) {
+    const button = linkButtons[i],
+      { href } = button.dataset;
+
+    button.addEventListener('click', () => {
+      window.open(href, '_self');
+    });
+  }
+}
 
 // attach calls to displaySection
 function initNextPrevButtons() {
@@ -46,17 +61,25 @@ function initNextPrevButtons() {
   attachHandlers(prevButtons, true);
 }
 
-// attach calls to open hrefs
-function initLinkButtons() {
-  let i = 0;
-  for (i; i < linkButtons.length; i++) {
-    const button = linkButtons[i],
-      { href } = button.dataset;
+// attach calls to open/close mobile menu
+function initMenuToggle() {
+  menuToggle.addEventListener('click', () => {
+    if (!menuIsActive) {
+      menuToggle.innerHTML = 'Close Menu';
+    } else {
+      menuToggle.innerHTML = 'Menu';
+    }
 
-    button.addEventListener('click', () => {
-      window.open(href, '_self');
-    });
-  }
+    menu.classList.toggle('active');
+    menuIsActive = !menuIsActive;
+  });
+}
+
+// attach call to display first section
+function initResetButton() {
+  resetButton.addEventListener('click', () => {
+    displaySection(0);
+  });
 }
 
 // attach calls to displaySection
@@ -72,20 +95,6 @@ function initSectionToggles() {
       displaySection(idx);
     });
   }
-}
-
-// attach calls to open/close mobile menu
-function initMenuToggle() {
-  menuToggle.addEventListener('click', () => {
-    if (!menuIsActive) {
-      menuToggle.innerHTML = 'Close Menu';
-    } else {
-      menuToggle.innerHTML = 'Menu';
-    }
-
-    menu.classList.toggle('active');
-    menuIsActive = !menuIsActive;
-  });
 }
 
 // remove current class from current section
