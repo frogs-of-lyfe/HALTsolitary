@@ -61,7 +61,12 @@ header {
   left: 0;
 }
 
-/* menu for mobile only */
+img {
+  width: 300px;
+  border: 1px solid var(--text-color);
+}
+
+/* show on mobile only */
 menu {
   display: none;
 }
@@ -96,7 +101,8 @@ h3 {
 /* small */
 h4,
 p:not(:last-child),
-li:not(:last-child) {
+li:not(:last-child),
+img {
   margin-bottom: var(--space-s);
 }
 
@@ -110,9 +116,10 @@ li:not(:last-child) {
 
 .email-body {
   display: inline-block;
-  margin-top: var(--space-l);
   border-top: 1px dotted var(--text-color);
+  border-bottom: 1px dotted var(--text-color);
   padding-top: var(--space-m);
+  padding-bottom: var(--space-m);
 }
 
 /* * * */
@@ -263,7 +270,7 @@ footer {
 @media (max-width: 845px) {
   
   /* * * * * * * * */
-  /* hide elements */
+  /* hide/show elements */
   /* * * * * * * * */
   
   .fade,
